@@ -21,22 +21,25 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
+      focused: true,
     };
     this.handleInputFocus = this.handleInputFocus.bind(this);
     this.handleInputBlur = this.handleInputBlur.bind(this);
   }
-handleInputFocus() {
-    this.setState({
-      focused: true
-    })
 
-}
-handleInputBlur() {
+  handleInputFocus() {
     this.setState({
-      focused: false
-    })
-}
+      focused: true,
+    });
+
+  }
+
+  handleInputBlur() {
+    this.setState({
+      focused: false,
+    });
+  }
+
   render() {
     return (
       <HeaderWrapper>
@@ -52,16 +55,15 @@ handleInputBlur() {
             <CSSTransition
               in={this.state.focused}
               timeout={200}
-              className='slide'
+              classNames ='slide'
             >
               <NavSearch
-             className = {this.state.focused ? 'focused' : null}
-             onFocus = { this.handleInputFocus }
-             onBlur = { this.handleInputBlur }
+                className={this.state.focused ? 'focused' : ''}
+                onFocus={this.handleInputFocus}
+                onBlur={this.handleInputBlur}
               />
-              <i className={this.state.focused ? 'focused iconfont' :'iconfont'}>&#xe614;</i>
             </CSSTransition>
-
+            <i className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
           </SearchWrapper>
         </Nav>
         <Addition>

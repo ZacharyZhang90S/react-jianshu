@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Logo = styled.a.attrs({
-  href: '/'
+  href: '/',
 })`
 	position: absolute;
 	top: 0;
@@ -48,7 +48,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
 	position: relative;
 	float: left;
-	.zoom {
+	.iconfont {
 		position: absolute;
 		right: 5px;
 		bottom: 5px;
@@ -64,8 +64,9 @@ export const SearchWrapper = styled.div`
 `;
 
 export const NavSearch = styled.input.attrs({
-  placeholder: '搜索'
+  placeholder: '搜索',
 })`
+
 	width: 160px;
 	height: 38px;
 	padding: 0 30px 0 20px;
@@ -169,4 +170,4 @@ export const Button = styled.div`
 		color: #fff;
 		background: #ec6149;
 	}
-`
+`;
