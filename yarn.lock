@@ -8163,10 +8163,10 @@ react-scripts@^3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react-transition-group@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npm.taobao.org/react-transition-group/download/react-transition-group-4.1.1.tgz#16efe9ac8c68306f6bef59c7da5a96b4dfd9fb32"
-  integrity sha1-Fu/prIxoMG9r71nH2lqWtN/Z+zI=
+react-transition-group@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.npm.taobao.org/react-transition-group/download/react-transition-group-4.2.1.tgz#61fc9e36568bff9a1fe4e60fae323c8a6dbc0680"
+  integrity sha1-YfyeNlaL/5of5OYPrjI8im28BoA=
   dependencies:
     "@babel/runtime" "^7.4.5"
     dom-helpers "^3.4.0"
@@ -9552,6 +9552,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@3.4.5:
+  version "3.4.5"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.4.5.tgz?cache=0&sync_timestamp=1562221027743&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
+  integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
 
 uglify-js@3.4.x:
   version "3.4.10"
