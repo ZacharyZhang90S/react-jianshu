@@ -56,14 +56,8 @@ const mapDispatch = (dispatch) => ({
   },
   changeScrollTopShow() {
     if (document.documentElement.scrollTop > 100) {
-      console.log(1);
-      console.log(document.documentElement.scrollTop);
-
       dispatch(actionCreators.toggleTopShow(true));
     } else {
-      console.log(2);
-      console.log(document.documentElement.scrollTop);
-
       dispatch(actionCreators.toggleTopShow(false));
     }
   },
@@ -71,7 +65,6 @@ const mapDispatch = (dispatch) => ({
 
 const mapState = (state) => ({
   showScroll: state.getIn(['home', 'showScroll']),
-
 });
 
 export default connect(mapState, mapDispatch)(Home);

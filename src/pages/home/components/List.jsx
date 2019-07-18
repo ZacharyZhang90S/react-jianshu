@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {ListItem, ListInfo, LoadMore} from '../style';
 import {connect} from 'react-redux';
-import * as actionCreators from '../store/actionCreators'
+import * as actionCreators from '../store/actionCreators';
+import {Link} from 'react-router-dom';
 
-class List extends Component {
+class List extends PureComponent {
   render() {
     const {list, page, getMoreList} = this.props;
     return (
@@ -11,17 +12,19 @@ class List extends Component {
         {
           list.map((item) => {
             return (
-              <ListItem key={item.get('id')}>
-                <img alt='' className='pic' src={item.get('imgUrl')}/>
-                <ListInfo>
-                  <h3 className='title'>{item.get('title')}</h3>
-                  <p className='desc'>{item.get('desc')}</p>
-                </ListInfo>
-              </ListItem>
+              <Link key={item.get('id')} to={'/detail/' + item.get('id')}>
+                <ListItem>
+                  <img alt='' className='pic' src={item.get('imgUrl')}/>
+                  <ListInfo>
+                    <h3 className='title'>{item.get('title')}</h3>
+                    <p className='desc'>{item.get('desc')}</p>
+                  </ListInfo>
+                </ListItem>
+              </Link>
             );
           })
         }
-        <LoadMore onClick={()=>getMoreList(page)}>更多文字</LoadMore>
+        <LoadMore onClick={() => getMoreList(page)}>更多文字</LoadMore>
       </div>
     );
   }
@@ -29,7 +32,7 @@ class List extends Component {
 
 const mapState = (state) => ({
   list: state.getIn(['home', 'articleList']),
-  page: state.getIn(['home', 'articlePage'])
+  page: state.getIn(['home', 'articlePage']),
 });
 
 const mapDispatch = (dispatch) => ({

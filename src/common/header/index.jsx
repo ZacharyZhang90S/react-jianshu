@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom'
 import {CSSTransition} from 'react-transition-group';
 import {actionCreators} from './store';
 import {
@@ -21,7 +22,7 @@ import {
 
 class Header extends Component {
   getListArea() {
-    const {focused,list} = this.props;
+    const {focused, list} = this.props;
     if (focused) {
       return (
         <SearchInfo>
@@ -31,7 +32,7 @@ class Header extends Component {
           </SearchInfoTitle>
           <SearchInfoList>
             {
-            list.map((item) => {
+              list.map((item) => {
                 return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
               })
             }
@@ -44,10 +45,12 @@ class Header extends Component {
   }
 
   render() {
-    const {focused} = this.props
+    const {focused} = this.props;
     return (
       <HeaderWrapper>
-        <Logo/>
+        <Link to='/'>
+          <Logo/>
+        </Link>
         <Nav>
           <NavItem className='left'> 首页</NavItem>
           <NavItem className='left'>下载App</NavItem>
@@ -96,7 +99,6 @@ const mapDispatchToProps = (dispatch) => {
     handleInputFocus() {
       dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocus());
-
     },
 
     handleInputBlur() {
