@@ -2,17 +2,16 @@ import {fromJS} from 'immutable';
 import * as constants from './constants';
 
 const defaultState = fromJS({
-  'title': '',
-  'content': '',
+  login: false,
 });
 
-const changeDetail = (state,action) => {
- return state.merge({'title': action.title, 'content': action.content})
-}
+
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case constants.CHANGE_DETAIL:
-      return changeDetail(state, action);
+    case constants.CHANGE_LOGIN:
+      return state.set('login', action.value);
+    case constants.LOGOUT:
+      return state.set('login', action.value);
     default:
       return state;
   }

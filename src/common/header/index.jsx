@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import {actionCreators} from './store';
+import {actionCreators as loginActionCreators} from '../../pages/login/store';
 import {
   HeaderWrapper,
   Logo,
@@ -20,7 +21,7 @@ import {
 } from './style';
 
 
-class Header extends Component {
+class Header extends PureComponent {
   getListArea() {
     const {focused, list} = this.props;
     if (focused) {
@@ -45,7 +46,7 @@ class Header extends Component {
   }
 
   render() {
-    const {focused} = this.props;
+    const {focused, login, logout} = this.props;
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -54,7 +55,13 @@ class Header extends Component {
         <Nav>
           <NavItem className='left'> 首页</NavItem>
           <NavItem className='left'>下载App</NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ?
+              <NavItem onClick={logout} className='right'>退出</NavItem> :
+              <Link to='/login'>
+                <NavItem className='right'>登录</NavItem>
+              </Link>
+          }
           <NavItem className='right'>
             <i className='iconfont'>&#xe636;</i>
           </NavItem>
@@ -73,11 +80,11 @@ class Header extends Component {
             </CSSTransition>
             <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
             {this.getListArea()}
-
           </SearchWrapper>
         </Nav>
         <Addition>
           <Button className='writting'>
+            写文章
             <i className='iconfont'>
               &#xe615;
             </i>
@@ -92,6 +99,7 @@ const mapStateToProps = (state) => {
   return {
     focused: state.getIn(['header', 'focused']),
     list: state.getIn(['header', 'list']),
+    login: state.getIn(['login', 'login']),
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -103,6 +111,9 @@ const mapDispatchToProps = (dispatch) => {
 
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
+    },
+    logout() {
+      dispatch(loginActionCreators.logout());
     },
   };
 };
